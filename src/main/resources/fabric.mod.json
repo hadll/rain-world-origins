@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "rain-world-origins",
+	"version": "${version}",
+	"name": "Rain World Origins",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/rain-world-origins/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.invertedowl.RainWorldOrigins"
+		],
+		"client": [
+			"com.invertedowl.RainWorldOriginsClient"
+		]
+	},
+	"mixins": [
+		"rain-world-origins.mixins.json",
+		{
+			"config": "rain-world-origins.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": "~1.19.3",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
