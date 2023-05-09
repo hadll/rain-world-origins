@@ -14,6 +14,5 @@ public class SpearEntity extends ProjectileEntity {
 
     @Override
     protected void initDataTracker() {
-        ArrowEntityRenderer
     }
 }
