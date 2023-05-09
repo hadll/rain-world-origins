@@ -19,7 +19,7 @@
 			"com.invertedowl.RainWorldOrigins"
 		],
 		"client": [
-			"com.invertedowl.RainWorldOriginsClient"
+			"com.invertedowl.client.RainWorldOriginsClient"
 		]
 	},
 	"mixins": [

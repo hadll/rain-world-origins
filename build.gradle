@@ -38,17 +38,17 @@ repositories {
 	}
 }
 
-loom {
-    splitEnvironmentSourceSets()
-
-    mods {
-        "rain-world-origins" {
-            sourceSet sourceSets.main
-            sourceSet sourceSets.client
-        }
-    }
-
-}
+////loom {
+////    splitEnvironmentSourceSets()
+////
+////    mods {
+////        "rain-world-origins" {
+////            sourceSet sourceSets.main
+////            sourceSet sourceSets.client
+////        }
+////    }
+//
+//}
 
 dependencies {
 	// To change the versions see the gradle.properties file

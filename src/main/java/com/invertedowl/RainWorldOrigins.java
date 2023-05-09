@@ -1,5 +1,6 @@
 package com.invertedowl;
 
+import com.invertedowl.registry.RWEntities;
 import com.invertedowl.registry.RWPowers;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,6 +13,6 @@ public class RainWorldOrigins implements ModInitializer {
     @Override
     public void onInitialize() {
         RWPowers.init();
-
+        RWEntities.init();
     }
 }

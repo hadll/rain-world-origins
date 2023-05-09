@@ -12,17 +12,5 @@ import javax.swing.text.JTextComponent;
 
 @Mixin(ServerPlayerEntity.class)
 public class PlayerEntityMixin {
-    private static JTextComponent.KeyBinding jumpKeyBinding;
 
-    @Inject(at = @At("HEAD"), method = "tick")
-    private void explode(CallbackInfo ci) {
-        jumpKeyBinding = KEy.registerKeyBinding(new JTextComponent.KeyBinding(
-                "key.examplemod.jump",
-                GLFW.GLFW_KEY_SPACE,
-                "key.categories.examplemod"
-        ));
-
-        JTextComponent.KeyBinding spacebarBinding = new JTextComponent.KeyBinding("key.spacebar", InputUtil.Type.KEYSYM, InputUtil.UNKNOWN_KEY.getCode(), "key.categories.gameplay");
-
-    }
 }
