@@ -16,7 +16,7 @@ public class RWEntities {
     public static final EntityType<SpearEntity> SPEAR_ENTITY_TYPE = Registry.register(
             Registries.ENTITY_TYPE,
             new Identifier(RainWorldOrigins.MOD_ID, "spear"),
-            FabricEntityTypeBuilder.create(SpawnGroup.MISC, SpearEntity::new).dimensions(EntityDimensions.fixed(0.75f, 0.75f)).build()
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, SpearEntity::new).dimensions(EntityDimensions.fixed(0.2f, 0.2f)).build()
     );
 
     public static void init() {
