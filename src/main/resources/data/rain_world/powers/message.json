@@ -1,6 +1,6 @@
 {
-    "name": "Message",
-    "description": "Test mixin message power",
+    "name": "Throwable Explosives",
+    "description": "Artificer is able to throw any TNT. It has half regular TNT power. This action uses up 4 hunger points.",
     "loading_priority": 1,
     "type": "rain-world-origins:message"
 }

@@ -3,7 +3,8 @@
 	"package": "com.invertedowl.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ServerPlayerInteractMixin"
+		"ServerPlayerInteractMixin",
+		"PlayerEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
