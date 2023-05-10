@@ -1,0 +1,16 @@
+{
+  "name": "Explosive Jump",
+  "description": "explosive jump",
+  "loading_priority": 1,
+  "type": "rain-world-origins:explosive_jump",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "text": "sdf"
+    }
+  ],
+  "key": {
+    "key": "key.origins.primary_active",
+    "continuous": false
+  }
+}
