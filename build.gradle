@@ -36,6 +36,22 @@ repositories {
 	maven {
 		url "https://maven.terraformersmc.com/"
 	}
+	maven {
+		name "cloth config"
+		url "https://maven.shedaniel.me/"
+	}
+	maven {
+		name "mod menu"
+		url "https://maven.terraformersmc.com/"
+	}
+	maven {
+		name "playerabilitylib"
+		url = 'https://ladysnake.jfrog.io/artifactory/mods'
+	}
+	maven {
+		name "reach entity attributes"
+		url "https://maven.jamieswhiteshirt.com/libs-release"
+	}
 }
 
 ////loom {
@@ -110,5 +126,8 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+		maven {
+			url "https://jitpack.io"
+		}
 	}
 }

@@ -1,0 +1,12 @@
+{
+  "name": "Swim Speed",
+  "description": "Rivulet is 2x faster underwater than usual",
+  "loading_priority": 1,
+  "type": "origins:attribute",
+  "modifier": {
+    "attribute": "additionalentityattributes:water_speed",
+    "name": "Additional swim speed",
+    "value": 2,
+    "operation": "multiply_base"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Spears",
+  "description": "spears",
+  "loading_priority": 1,
+  "type": "rain-world-origins:new_spear",
+  "badges": [
+    {
+      "type": "origins:keybind",
+      "text": "sdf"
+    }
+  ],
+  "key": {
+    "key": "key.origins.primary_active",
+    "continuous": false
+  }
+}

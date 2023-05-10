@@ -1,0 +1,14 @@
+{
+  "name": "Spearmaster",
+  "description": "An abnormality who feeds using needles pulled from its body.",
+  "powers": [
+    "rain_world:onlyeatspeared",
+    "rain_world:newspear"
+  ],
+  "icon": {
+    "item": "rain-world-origins:spear_item",
+    "amount": 1
+  },
+  "order": 0,
+  "impact": 2
+}

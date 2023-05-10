@@ -1,6 +1,8 @@
 {
     "origins": [
-        "rain_world:artificer"
+        "rain_world:artificer",
+        "rain_world:spearmaster",
+        "rain_world:rivulet"
     ],
     "enabled": true
 }

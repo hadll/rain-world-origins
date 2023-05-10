@@ -1,0 +1,12 @@
+{
+  "name": "Run Speed",
+  "description": "Rivulet is 1.75x faster than usual",
+  "loading_priority": 1,
+  "type": "origins:attribute",
+  "modifier": {
+    "name": "Tailwind speed bonus",
+    "attribute": "minecraft:generic.movement_speed",
+    "value": 0.75,
+    "operation": "multiply_base"
+  }
+}

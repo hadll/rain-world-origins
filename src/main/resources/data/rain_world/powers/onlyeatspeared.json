@@ -1,0 +1,6 @@
+{
+  "name": "Spear Dependant",
+  "description": "Having no mouth, Spearmaster may only gain hunger by hitting other entities with spears.",
+  "loading_priority": 1,
+  "type": "rain-world-origins:can_only_eat_speared"
+}

@@ -63,6 +63,7 @@ public class ServerPlayerInteractMixin {
 						}
 					});
 					player.getHungerManager().setFoodLevel(player.getHungerManager().getFoodLevel() - 4);
+					if (player.getHungerManager().getFoodLevel() < 0) player.getHungerManager().setFoodLevel(0);
 				}
 			}
 		}
