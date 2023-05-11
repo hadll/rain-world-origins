@@ -64,7 +64,7 @@ public class TonguePower extends ActiveCooldownPower {
                 Vec3d eyeDir = player.getRotationVec(1.0F);
 
                 // Set raycast distance
-                double raycastDistance = 250.0;
+                double raycastDistance = 100.0;
 
                 // Calculate raycast end position
                 Vec3d raycastEnd = eyePos.add(eyeDir.multiply(raycastDistance));
@@ -75,13 +75,16 @@ public class TonguePower extends ActiveCooldownPower {
                 // Perform raycast
                 BlockHitResult raycastResult = player.getWorld().raycast(raycastContext);
 
+
                 if (raycastResult.getType() == BlockHitResult.Type.BLOCK) {
                     BlockPos blockPos = raycastResult.getBlockPos();
                     ToungeEntity toungeEntity = new ToungeEntity(player.world, player, new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                    toungeEntity.teleport(player.getX(), player.getY(), player.getZ());
 
-                    entity.sendMessage(Text.of("TONGUE"));
                     player.world.spawnEntity(toungeEntity);
                     tongues.put(player, toungeEntity);
+                } else {
+                    tongueOut = !tongueOut;
                 }
             } else {
                 if (tongues.get(player) != null)

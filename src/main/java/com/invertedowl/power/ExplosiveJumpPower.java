@@ -26,7 +26,6 @@ public class ExplosiveJumpPower extends ActiveCooldownPower {
 
     @Override
     public void onUse() {
-        ((PlayerEntity) entity).sendMessage(Text.of(ticksSinceUse + " == " + cooldownDuration));
         if (canUse()) {
 
             ticksSinceUse = 0;

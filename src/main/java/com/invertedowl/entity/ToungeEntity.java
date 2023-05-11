@@ -5,12 +5,10 @@ import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -35,7 +33,6 @@ public class ToungeEntity extends Entity {
     public float toz;
 
     public Entity connected;
-
     public float initDist;
 
     @Override
@@ -55,6 +52,7 @@ public class ToungeEntity extends Entity {
         this.tox = ((TongueSpawnPacket) packet).tox;
         this.toy = ((TongueSpawnPacket) packet).toy;
         this.toz = ((TongueSpawnPacket) packet).toz;
+        connected = this.world.getEntityById(((TongueSpawnPacket) packet).connectedId);
     }
 
     @Override
@@ -120,12 +118,14 @@ public class ToungeEntity extends Entity {
         float tox;
         float toy;
         float toz;
+        int connectedId;
 
         public TongueSpawnPacket(Entity entity) {
             super(entity);
             this.tox = (float) ((ToungeEntity) entity).tox;
             this.toy = (float) ((ToungeEntity) entity).toy;
             this.toz = (float) ((ToungeEntity) entity).toz;
+            this.connectedId = ((ToungeEntity) entity).getId();
         }
     }
 }

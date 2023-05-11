@@ -28,6 +28,12 @@ public class RWPowers {
         return power;
     }).allowCondition();
 
+    public static final PowerFactory<Power> LEVITATE = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "levitate"), new SerializableData().add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()), data -> (type, entity) -> {
+        LevitatePower power = new LevitatePower(type, entity, 20, HudRender.DONT_RENDER, null);
+        power.setKey((Active.Key)data.get("key"));
+        return power;
+    }).allowCondition();
+
     public static final PowerFactory<Power> TONGUE = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "tongue"), new SerializableData().add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()), data -> (type, entity) -> {
         TonguePower power = new TonguePower(type, entity, 20, HudRender.DONT_RENDER, null);
         power.setKey((Active.Key)data.get("key"));
@@ -40,5 +46,6 @@ public class RWPowers {
         Registry.register(ApoliRegistries.POWER_FACTORY, CAN_ONLY_EAT_SPEARED.getSerializerId(), CAN_ONLY_EAT_SPEARED);
         Registry.register(ApoliRegistries.POWER_FACTORY, NEW_SPEAR.getSerializerId(), NEW_SPEAR);
         Registry.register(ApoliRegistries.POWER_FACTORY, TONGUE.getSerializerId(), TONGUE);
+        Registry.register(ApoliRegistries.POWER_FACTORY, LEVITATE.getSerializerId(), LEVITATE);
     }
 }

@@ -2,7 +2,11 @@
   "name": "Saint",
   "description": "Frail and armed with a long tongue. Your journey will be one of perfect enlightenment, but walking this path requires patience, caution and complete attunement with the world.",
   "powers": [
-    "rain_world:tongue"
+    "rain_world:tongue",
+    "rain_world:fallprot",
+    "rain_world:extralowhealth",
+    "rain_world:levitate",
+    "origins:vegetarian"
   ],
   "icon": {
     "item": "minecraft:lime_wool",
