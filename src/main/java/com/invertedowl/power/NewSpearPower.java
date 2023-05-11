@@ -21,7 +21,10 @@ import java.util.function.Consumer;
 public class NewSpearPower extends ActiveCooldownPower {
     public NewSpearPower(PowerType<?> type, LivingEntity entity, int cooldownDuration, HudRender hudRender, Consumer<Entity> activeFunction) {
         super(type, entity, cooldownDuration, HudRender.DONT_RENDER, activeFunction);
+        this.setTicking(true);
     }
+
+    private int ticksSinceUse = 0;
 
     public int getItemCount(PlayerEntity player, Item item) {
         int count = 0;
@@ -39,29 +42,32 @@ public class NewSpearPower extends ActiveCooldownPower {
         return count;
     }
 
-    private boolean onDown = false;
     @Override
     public void onUse() {
-        if (canUse()) {
-            onDown = !onDown;
+        if (canUse() && ticksSinceUse > cooldownDuration) {
 
-            if (onDown) {
-                PlayerEntity playerEntity = (PlayerEntity) entity;
+            PlayerEntity playerEntity = (PlayerEntity) entity;
+            ticksSinceUse = 0;
+            if (getItemCount(playerEntity, RWItems.SPEAR_ITEM) >= 2) {
+                return;
+            }
 
-                if (getItemCount(playerEntity, RWItems.SPEAR_ITEM) >= 2) {
-                    return;
-                }
+            if (playerEntity.getMainHandStack().getItem() == Items.AIR || playerEntity.getMainHandStack().getItem() == null) {
+                playerEntity.setStackInHand(Hand.MAIN_HAND, new ItemStack(RWItems.SPEAR_ITEM));
+                return;
+            }
 
-                if (playerEntity.getMainHandStack().getItem() == Items.AIR || playerEntity.getMainHandStack().getItem() == null) {
-                    playerEntity.setStackInHand(Hand.MAIN_HAND, new ItemStack(RWItems.SPEAR_ITEM));
-                    return;
-                }
-
-                if (playerEntity.getOffHandStack().getItem() == Items.AIR || playerEntity.getOffHandStack().getItem() == null) {
-                    playerEntity.setStackInHand(Hand.OFF_HAND, new ItemStack(RWItems.SPEAR_ITEM));
-                    return;
-                }
+            if (playerEntity.getOffHandStack().getItem() == Items.AIR || playerEntity.getOffHandStack().getItem() == null) {
+                playerEntity.setStackInHand(Hand.OFF_HAND, new ItemStack(RWItems.SPEAR_ITEM));
+                return;
             }
         }
     }
+
+    @Override
+    public void tick() {
+        ticksSinceUse++;
+    }
+
+
 }

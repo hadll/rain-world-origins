@@ -33,7 +33,6 @@ public class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "dropLoot", cancellable = true)
     private void drop(DamageSource source, boolean playerCuase, CallbackInfo ci) {
 
-        ci.cancel();
 
         if (source.getAttacker() instanceof PlayerEntity player) {
 //            LivingEntity.class.cast(this).drop
@@ -44,7 +43,11 @@ public class LivingEntityMixin {
             for (OnlyEatSpeared power : PowerHolderComponent.getPowers(player, OnlyEatSpeared.class)) {
                 if (power.isActive()) {
                     isSpearmaster = true;
+                    ci.cancel();
                 }
+            }
+            if (!isSpearmaster) {
+                return;
             }
 
             Identifier identifier = LivingEntity.class.cast(this).getLootTable();

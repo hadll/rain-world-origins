@@ -32,6 +32,7 @@ public class SpearEntity extends PersistentProjectileEntity {
         this.stack = stack;
     }
 
+    private int life = 0;
 
     @Override
     public void onHit(LivingEntity target) {
@@ -51,7 +52,11 @@ public class SpearEntity extends PersistentProjectileEntity {
 
     @Override
     public void tick() {
+        life += 1;
 
+        if (life >= (20) * 20) {
+            this.remove(RemovalReason.DISCARDED);
+        }
         super.tick();
     }
 

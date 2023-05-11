@@ -13,13 +13,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SpearEntityModel extends EntityModel<SpearEntity> {
-    private ModelPart spear;
+    public ModelPart spear;
 
     private final ModelPart main;
 
     public SpearEntityModel(ModelPart modelPart) {
         super(RenderLayer::getEntitySolid);
         this.main = modelPart;
+        this.spear = modelPart;
     }
 
     public static TexturedModelData getTexturedModelData() {

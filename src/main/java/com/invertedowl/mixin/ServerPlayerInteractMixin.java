@@ -62,7 +62,7 @@ public class ServerPlayerInteractMixin {
 							tntEntity.remove(Entity.RemovalReason.KILLED);
 						}
 					});
-					player.getHungerManager().setFoodLevel(player.getHungerManager().getFoodLevel() - 4);
+					player.getHungerManager().setFoodLevel(player.getHungerManager().getFoodLevel() - 1);
 					if (player.getHungerManager().getFoodLevel() < 0) player.getHungerManager().setFoodLevel(0);
 				}
 			}

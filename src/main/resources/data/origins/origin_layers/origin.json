@@ -2,7 +2,8 @@
     "origins": [
         "rain_world:artificer",
         "rain_world:spearmaster",
-        "rain_world:rivulet"
+        "rain_world:rivulet",
+        "rain_world:saint"
     ],
     "enabled": true
 }

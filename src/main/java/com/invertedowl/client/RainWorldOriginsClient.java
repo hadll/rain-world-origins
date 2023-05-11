@@ -21,6 +21,9 @@ public class RainWorldOriginsClient implements ClientModInitializer {
         EntityRendererRegistry.register(RWEntities.SPEAR_ENTITY_TYPE, ctx -> {
             return new SpearEntityRenderer(ctx);
         });
+        EntityRendererRegistry.register(RWEntities.TOUNGE_ENTITY_TYPE, ctx -> {
+            return new ToungeEntityRenderer(ctx);
+        });
 
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, SpearEntityModel::getTexturedModelData);
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.
