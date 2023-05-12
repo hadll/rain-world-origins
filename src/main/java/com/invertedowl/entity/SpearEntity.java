@@ -46,7 +46,8 @@ public class SpearEntity extends PersistentProjectileEntity {
             if (newFoodLevel > 20) newFoodLevel = 20.0f;
             ((PlayerEntity) getOwner()).getHungerManager().setFoodLevel((int) newFoodLevel);
         } catch (Exception exception) {
-            getOwner().sendMessage(Text.of("Eyo tell owl there was another error. This time its: " + exception.toString()));
+
+            //            getOwner().sendMessage(Text.of("Eyo tell owl there was another error. This time its: " + exception.toString()));
         }
     }
 
