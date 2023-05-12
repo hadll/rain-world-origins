@@ -36,12 +36,18 @@ public class SpearEntity extends PersistentProjectileEntity {
 
     @Override
     public void onHit(LivingEntity target) {
-            // haha what a loser
-        float initFoodLevel = ((PlayerEntity) getOwner()).getHungerManager().getFoodLevel();
+        // TODO: This is causing crash
 
-        float newFoodLevel = initFoodLevel + 2;
-        if (newFoodLevel > 20) newFoodLevel = 20.0f;
-        ((PlayerEntity) getOwner()).getHungerManager().setFoodLevel((int) newFoodLevel);
+        try {
+            // haha what a loser
+            float initFoodLevel = ((PlayerEntity) getOwner()).getHungerManager().getFoodLevel();
+
+            float newFoodLevel = initFoodLevel + 2;
+            if (newFoodLevel > 20) newFoodLevel = 20.0f;
+            ((PlayerEntity) getOwner()).getHungerManager().setFoodLevel((int) newFoodLevel);
+        } catch (Exception exception) {
+            getOwner().sendMessage(Text.of("Eyo tell owl there was another error. This time its: " + exception.toString()));
+        }
     }
 
 
@@ -73,22 +79,7 @@ public class SpearEntity extends PersistentProjectileEntity {
 
     @Override
     public Packet<ClientPlayPacketListener> createSpawnPacket() {
-        return new SpearSpawnPacket(this);
+        return new EntitySpawnS2CPacket(this);
     }
 
-    public static class SpearSpawnPacket extends EntitySpawnS2CPacket {
-        private int entityId;
-        private double x;
-        private double y;
-        private double z;
-
-        public SpearSpawnPacket(Entity entity) {
-            super(entity);
-            this.x = entity.getX();
-            this.y = entity.getY();
-            this.z = entity.getZ();
-        }
-
-
-    }
 }

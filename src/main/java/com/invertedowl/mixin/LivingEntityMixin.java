@@ -1,6 +1,7 @@
 package com.invertedowl.mixin;
 
 import com.invertedowl.power.OnlyEatSpeared;
+import com.invertedowl.power.TonguePower;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -29,6 +30,14 @@ import javax.swing.text.JTextComponent;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
+    @Inject(at = @At("HEAD"), method = "onDeath")
+    private void onDeath(DamageSource damageSource, CallbackInfo ci) {
+        if (LivingEntity.class.cast(this) instanceof PlayerEntity) {
+
+            TonguePower.tongues.get(((PlayerEntity)LivingEntity.class.cast(this)).getUuid().toString()).remove(Entity.RemovalReason.DISCARDED);
+            TonguePower.tongues.remove(((PlayerEntity)LivingEntity.class.cast(this)).getUuid().toString());
+        }
+    }
 
     @Inject(at = @At("HEAD"), method = "dropLoot", cancellable = true)
     private void drop(DamageSource source, boolean playerCuase, CallbackInfo ci) {

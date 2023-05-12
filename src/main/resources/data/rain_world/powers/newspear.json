@@ -1,6 +1,6 @@
 {
   "name": "Spears",
-  "description": "spears",
+  "description": "Spearmaster is able to make up to 2 spears at a time from their body (Primary). If Spearmaster gains a new spear while its mainhand is not empty, it will attempt to put it in the offhand.",
   "loading_priority": 1,
   "type": "rain-world-origins:new_spear",
   "badges": [

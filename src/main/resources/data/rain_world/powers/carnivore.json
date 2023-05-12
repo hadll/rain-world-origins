@@ -1,7 +1,7 @@
 {
   "type": "origins:prevent_item_use",
   "name": "Carnivore",
-  "description": "Artificer may only consume meats",
+  "description": "Artificer may only consume meats.",
   "item_condition": {
     "type": "origins:and",
     "conditions": [

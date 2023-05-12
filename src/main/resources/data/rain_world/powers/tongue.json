@@ -1,6 +1,6 @@
 {
   "name": "Tongue",
-  "description": "tongue",
+  "description": "Saint has a powerful tongue that allows for quick movement and safe positions (Primary). Primary again to retract the tongue.",
   "loading_priority": 1,
   "type": "rain-world-origins:tongue",
   "badges": [

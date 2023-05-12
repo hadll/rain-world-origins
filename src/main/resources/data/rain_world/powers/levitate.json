@@ -1,6 +1,6 @@
 {
   "name": "Levitate",
-  "description": "levitate",
+  "description": "Saint is able to levitate for a few seconds, gaining advantage on enemies (Secondary). \n\nSaint is also able to explode things at a distance (Secondary + Crouch).",
   "loading_priority": 1,
   "type": "rain-world-origins:levitate",
   "badges": [

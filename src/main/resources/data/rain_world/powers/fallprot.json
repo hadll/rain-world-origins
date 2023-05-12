@@ -1,4 +1,6 @@
 {
+  "name": "Fall Protection",
+  "description": "Saint is able to fall great heights without taking damage.",
   "type": "origins:invulnerability",
   "damage_condition": {
     "type": "origins:name",

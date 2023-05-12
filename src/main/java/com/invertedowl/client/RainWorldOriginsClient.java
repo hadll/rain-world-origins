@@ -1,13 +1,14 @@
 package com.invertedowl.client;
 
 import com.invertedowl.RainWorldOrigins;
-import com.invertedowl.entity.SpearEntity;
 import com.invertedowl.registry.RWEntities;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
@@ -22,8 +23,9 @@ public class RainWorldOriginsClient implements ClientModInitializer {
             return new SpearEntityRenderer(ctx);
         });
         EntityRendererRegistry.register(RWEntities.TOUNGE_ENTITY_TYPE, ctx -> {
-            return new ToungeEntityRenderer(ctx);
+            return new TongueEntityRenderer(ctx);
         });
+
 
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, SpearEntityModel::getTexturedModelData);
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.

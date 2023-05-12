@@ -1,23 +1,18 @@
 package com.invertedowl.power;
 
-import com.invertedowl.registry.RWItems;
+import com.invertedowl.entity.TongueEntity;
 import io.github.apace100.apoli.power.ActiveCooldownPower;
 import io.github.apace100.apoli.power.PowerType;
 import io.github.apace100.apoli.util.HudRender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
-import com.invertedowl.entity.ToungeEntity;
 
 import java.util.HashMap;
 import java.util.function.Consumer;
@@ -47,7 +42,7 @@ public class TonguePower extends ActiveCooldownPower {
     }
 
     boolean tongueOut = true;
-    public HashMap<PlayerEntity, Entity> tongues = new HashMap<>();
+    public static HashMap<String, Entity> tongues = new HashMap<>();
 
     @Override
     public void onUse() {
@@ -55,6 +50,10 @@ public class TonguePower extends ActiveCooldownPower {
 
         if (canUse()) {
             tongueOut = !tongueOut;
+            if (tongues.get(player.getUuid().toString()) != null) {
+                tongues.get(player.getUuid().toString()).remove(Entity.RemovalReason.DISCARDED);
+                tongues.remove(player.getUuid().toString());
+            }
 
             if (!tongueOut) {
 
@@ -78,21 +77,21 @@ public class TonguePower extends ActiveCooldownPower {
 
                 if (raycastResult.getType() == BlockHitResult.Type.BLOCK) {
                     BlockPos blockPos = raycastResult.getBlockPos();
-                    ToungeEntity toungeEntity = new ToungeEntity(player.world, player, new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
-                    toungeEntity.teleport(player.getX(), player.getY(), player.getZ());
+                    TongueEntity tongueEntity = new TongueEntity(player.world, player, new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                    tongueEntity.teleport(player.getX(), player.getY(), player.getZ());
 
-                    player.world.spawnEntity(toungeEntity);
-                    tongues.put(player, toungeEntity);
+                    player.world.spawnEntity(tongueEntity);
+                    tongues.put(player.getUuid().toString(), tongueEntity);
                 } else {
                     tongueOut = !tongueOut;
                 }
             } else {
-                if (tongues.get(player) != null)
-                tongues.get(player).remove(Entity.RemovalReason.DISCARDED);
+
+                if (tongues.get(player.getUuid().toString()) != null) {
+                    tongues.get(player.getUuid().toString()).remove(Entity.RemovalReason.DISCARDED);
+                    tongues.remove(player.getUuid().toString());
+                }
             }
-
-
-
         }
     }
 
