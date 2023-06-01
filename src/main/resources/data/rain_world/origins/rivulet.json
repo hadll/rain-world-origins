@@ -5,7 +5,12 @@
     "rain_world:speed",
     "rain_world:swim_speed",
     "rain_world:water_breathing",
-    "rain_world:lowhealth"
+    "rain_world:lowhealth",
+    "rain_world:better_vision",
+    "rain_world:jumpheight",
+    "rain_world:quickhands",
+    "rain_world:fallheight",
+    "rain_world:smallsize"
   ],
   "icon": {
     "item": "minecraft:water_bucket",

@@ -1,3 +1,6 @@
 {
-  "item.rain-world-origins.spear_item": "Spear"
+  "item.rain-world-origins.spear_item": "Spear",
+  "item.rain-world-origins.spear_item_crafted": "Spear",
+  "item.rain-world-origins.explosive_spear_item_crafted": "Explosive Spear",
+  "item.rain-world-origins.rubbish_item_crafted": "Rubbish"
 }

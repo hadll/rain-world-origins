@@ -1,9 +1,7 @@
 package com.invertedowl.client;
 
 import com.invertedowl.RainWorldOrigins;
-import com.invertedowl.entity.SpearEntity;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import com.invertedowl.entity.ExplosiveSpearEntity;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -20,36 +18,33 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
-public class SpearEntityRenderer extends EntityRenderer<SpearEntity> {
+public class ExplosiveSpearEntityRenderer extends EntityRenderer<ExplosiveSpearEntity> {
     private ThrowableModel model;
 
 
 
-    public SpearEntityRenderer(EntityRendererFactory.Context ctx) {
+    public ExplosiveSpearEntityRenderer(EntityRendererFactory.Context ctx) {
 
         super(ctx);
         ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, -32, -1, -1, 32+8, 2, 2, 0, 0, 0, false, 16, 16);
+        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(16, 16, 0-8, -1.5f, -1.5f, 8, 3, 3, 0, 0, 0, false, 16, 32);
 
         List<ModelPart.Cuboid> cubes = new ArrayList<>();
         cubes.add(cuboid);
+        cubes.add(cuboid2);
 
         ModelPart part = new ModelPart(cubes, new HashMap<>());
         this.model = new ThrowableModel(part);
     }
 
     @Override
-    public Identifier getTexture(SpearEntity entity) {
-        if (entity.getDataTracker().get(SpearEntity.IS_CRAFTED)) {
-            return new Identifier(RainWorldOrigins.MOD_ID, "textures/entity/black_wool.png");
-        } else {
-            return new Identifier(RainWorldOrigins.MOD_ID, "textures/entity/spear.png");
-        }
-
+    public Identifier getTexture(ExplosiveSpearEntity entity) {
+        return new Identifier(RainWorldOrigins.MOD_ID, "textures/entity/explosive.png");
     }
 
     @Override
-    public void render(SpearEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
+    public void render(ExplosiveSpearEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
+
         matrices.push();
         matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw()) - 90.0F));
         matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch())));

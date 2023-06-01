@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 
 import java.util.function.Consumer;
 
@@ -43,7 +44,7 @@ public class LevitatePower extends ActiveCooldownPower {
                     boolean mobGriefing = entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
                     entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, entity.getServer());
-                    entity.world.createExplosion(entity, result.getPos().getX(), result.getPos().getY(), result.getPos().getZ(), 1f, World.ExplosionSourceType.MOB);
+                    entity.world.createExplosion(entity, result.getPos().getX(), result.getPos().getY(), result.getPos().getZ(), 1.5f, Explosion.DestructionType.NONE);
                     entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, entity.getServer());
                 }
             }

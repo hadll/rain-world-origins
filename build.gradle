@@ -75,9 +75,10 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.github.eggohito:origins-fabric:${project.origins_version}"
-	modImplementation "com.github.eggohito:apoli:2.7.1"
-	modImplementation "com.github.apace100:calio:1.9.0"
-	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.1.0"
+	modImplementation "com.github.eggohito:apoli:2.6.1"
+	modImplementation "com.github.apace100:calio:1.7.0"
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.0.2"
+	modImplementation "com.github.virtuoel:pehkui:3.5.0"
 	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 

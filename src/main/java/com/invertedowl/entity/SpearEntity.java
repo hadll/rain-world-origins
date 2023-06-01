@@ -6,6 +6,10 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandler;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -22,6 +26,7 @@ import net.minecraft.world.World;
 
 public class SpearEntity extends PersistentProjectileEntity {
     private ItemStack stack;
+    public static TrackedData<Boolean> IS_CRAFTED;
 
     public SpearEntity(EntityType<? extends SpearEntity> entityType, World world) {
         super(entityType, world);
@@ -30,13 +35,23 @@ public class SpearEntity extends PersistentProjectileEntity {
     public SpearEntity(World world, LivingEntity owner, ItemStack stack) {
         super(RWEntities.SPEAR_ENTITY_TYPE, owner, world);
         this.stack = stack;
+        dataTracker.set(IS_CRAFTED, false);
+    }
+
+    public SpearEntity(World world, LivingEntity owner, ItemStack stack, boolean isCrafted) {
+        super(RWEntities.SPEAR_ENTITY_TYPE, owner, world);
+        this.stack = stack;
+        dataTracker.set(IS_CRAFTED, isCrafted);
     }
 
     private int life = 0;
 
     @Override
     public void onHit(LivingEntity target) {
-        // TODO: This is causing crash
+
+        if (dataTracker.get(IS_CRAFTED)) {
+            return;
+        }
 
         try {
             // haha what a loser
@@ -45,9 +60,11 @@ public class SpearEntity extends PersistentProjectileEntity {
             float newFoodLevel = initFoodLevel + 2;
             if (newFoodLevel > 20) newFoodLevel = 20.0f;
             ((PlayerEntity) getOwner()).getHungerManager().setFoodLevel((int) newFoodLevel);
+
+
         } catch (Exception exception) {
 
-            //            getOwner().sendMessage(Text.of("Eyo tell owl there was another error. This time its: " + exception.toString()));
+//            getOwner().sendMessage(Text.of("Eyo tell owl there was another error. This time its: " + exception.toString()));
         }
     }
 
@@ -55,6 +72,7 @@ public class SpearEntity extends PersistentProjectileEntity {
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
+        dataTracker.startTracking(IS_CRAFTED, false);
     }
 
     @Override
@@ -83,4 +101,8 @@ public class SpearEntity extends PersistentProjectileEntity {
         return new EntitySpawnS2CPacket(this);
     }
 
+
+    static {
+        IS_CRAFTED = DataTracker.registerData(SpearEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    }
 }

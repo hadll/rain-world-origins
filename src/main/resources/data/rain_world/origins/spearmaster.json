@@ -3,7 +3,8 @@
   "description": "An abnormality who feeds using needles pulled from its body.",
   "powers": [
     "rain_world:onlyeatspeared",
-    "rain_world:newspear"
+    "rain_world:newspear",
+    "rain_world:smallsize"
   ],
   "icon": {
     "item": "rain-world-origins:spear_item",

@@ -16,6 +16,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.ExplosionBehavior;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +37,7 @@ public class ServerPlayerInteractMixin {
 					TntEntity tntEntity = new TntEntity(player.world, player.getX() - Math.sin(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())), player.getY() + 1, player.getZ() + Math.cos(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())), player);
 
 					// Set the velocity of the TNT entity based on the player's facing direction
-					float speed = 1.5f; // Adjust the speed as needed
+					float speed = 1.5f;
 					double motionX = -Math.sin(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())) * speed;
 					double motionY = -Math.sin(Math.toRadians(playerEntity.getPitch()));
 					double motionZ = Math.cos(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())) * speed;
@@ -57,7 +58,7 @@ public class ServerPlayerInteractMixin {
 							boolean mobGriefing = player.server.getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
 							player.server.getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, player.server);
-							player.world.createExplosion(null, tntEntity.getX(), tntEntity.getY(), tntEntity.getZ(), 2.0f, World.ExplosionSourceType.MOB);
+							player.world.createExplosion(null, tntEntity.getX(), tntEntity.getY(), tntEntity.getZ(), 2.0f, Explosion.DestructionType.NONE);
 							player.server.getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, player.server);
 							tntEntity.remove(Entity.RemovalReason.KILLED);
 						}

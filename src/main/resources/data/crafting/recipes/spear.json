@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stone"
+        },
+        {
+            "item": "minecraft:stone"
+        }
+    ],
+    "result": {"item":"rain-world-origins:spear_item_crafted"}
+}

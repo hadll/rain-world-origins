@@ -6,7 +6,8 @@
         "rain_world:message",
         "rain_world:waterweak",
         "rain_world:carnivore",
-        "rain_world:explosivejump"
+        "rain_world:explosivejump",
+        "rain_world:smallsize"
     ],
     "icon": {
         "item": "minecraft:tnt",

@@ -7,8 +7,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
@@ -19,15 +17,22 @@ public class RainWorldOriginsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+
         EntityRendererRegistry.register(RWEntities.SPEAR_ENTITY_TYPE, ctx -> {
             return new SpearEntityRenderer(ctx);
         });
         EntityRendererRegistry.register(RWEntities.TOUNGE_ENTITY_TYPE, ctx -> {
             return new TongueEntityRenderer(ctx);
         });
+        EntityRendererRegistry.register(RWEntities.EXPLOSIVE_SPEAR_ENTITY_TYPE, ctx -> {
+            return new ExplosiveSpearEntityRenderer(ctx);
+        });
+        EntityRendererRegistry.register(RWEntities.RUBBISH_ENTITY_TYPE, ctx -> {
+            return new RubbishEntityRenderer(ctx);
+        });
 
 
-        EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, SpearEntityModel::getTexturedModelData);
-        // This entrypoint is suitable for setting up client-specific logic, such as rendering.
+        EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, ThrowableModel::getTexturedModelData);
     }
 }

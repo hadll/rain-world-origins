@@ -11,14 +11,14 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.RotationAxis;
+import net.minecraft.util.math.Vec3f;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class TongueEntityRenderer extends EntityRenderer<TongueEntity> {
-    private SpearEntityModel model;
+    private ThrowableModel model;
 
     public TongueEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
@@ -30,7 +30,7 @@ public class TongueEntityRenderer extends EntityRenderer<TongueEntity> {
         cubes.add(cuboid);
 
         ModelPart part = new ModelPart(cubes, new HashMap<>());
-        this.model = new SpearEntityModel(part);
+        this.model = new ThrowableModel(part);
     }
 
 
@@ -44,9 +44,6 @@ public class TongueEntityRenderer extends EntityRenderer<TongueEntity> {
 
 
         matrices.push();
-//        this.model.spear.forEachCuboid(matrices, (matrix, path, index, cuboid) -> {
-//            cuboid = new ModelPart.Cuboid(0, 0, -32, 0, 0, 64, 1, 1, 0, 0, 0, false, 16, 16);
-//        });
 
 
         float midX = (float) ((entity.fromx + entity.getDataTracker().get(TongueEntity.TOX)) / 2);
@@ -55,8 +52,8 @@ public class TongueEntityRenderer extends EntityRenderer<TongueEntity> {
 
         float dist = (float) Math.sqrt(Math.pow(entity.getDataTracker().get(TongueEntity.TOX)-entity.fromx, 2) + Math.pow(entity.getDataTracker().get(TongueEntity.TOY)-entity.fromy, 2) + Math.pow(entity.getDataTracker().get(TongueEntity.TOZ)-entity.fromz, 2));
         float halfDist = dist / 2;
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180 - entity.getYaw() + 90));
-        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(-entity.getPitch()));
+        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180 - entity.getYaw() + 90));
+        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-entity.getPitch()));
         matrices.scale(dist, 1, 1);
         VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.model.getLayer(this.getTexture(entity)), false, false);
         this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);

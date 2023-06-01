@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "rain-world-origins:spear_item_crafted"
+        },
+        {
+            "item": "minecraft:tnt"
+        }
+    ],
+    "result": {"item":"rain-world-origins:explosive_spear_item_crafted"}
+}

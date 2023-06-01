@@ -10,12 +10,14 @@ import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.apoli.util.HudRender;
 import io.github.apace100.calio.data.SerializableData;
-import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class RWPowers {
     public static final PowerFactory<Power> MESSAGE = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "message"), new SerializableData(), data -> (type, entity) -> new TntThrowPower(type, entity)).allowCondition();
+    public static final PowerFactory<Power> FALL_DIST_PROT = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "fall_dist_prot"), new SerializableData(), data -> (type, entity) -> new FallDistProt(type, entity)).allowCondition();
+    public static final PowerFactory<Power> SMALL_SIZE = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "small_size"), new SerializableData(), data -> (type, entity) -> new SmallSizePower(type, entity)).allowCondition();
     public static final PowerFactory<Power> EXPLOSIVE_JUMP = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "explosive_jump"), new SerializableData().add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()), data -> (type, entity) -> {
         ExplosiveJumpPower power = new ExplosiveJumpPower(type, entity, 200, HudRender.DONT_RENDER, null);
         power.setKey((Active.Key)data.get("key"));
@@ -42,6 +44,8 @@ public class RWPowers {
 
     public static void init() {
         Registry.register(ApoliRegistries.POWER_FACTORY, MESSAGE.getSerializerId(), MESSAGE);
+        Registry.register(ApoliRegistries.POWER_FACTORY, FALL_DIST_PROT.getSerializerId(), FALL_DIST_PROT);
+        Registry.register(ApoliRegistries.POWER_FACTORY, SMALL_SIZE.getSerializerId(), SMALL_SIZE);
         Registry.register(ApoliRegistries.POWER_FACTORY, EXPLOSIVE_JUMP.getSerializerId(), EXPLOSIVE_JUMP);
         Registry.register(ApoliRegistries.POWER_FACTORY, CAN_ONLY_EAT_SPEARED.getSerializerId(), CAN_ONLY_EAT_SPEARED);
         Registry.register(ApoliRegistries.POWER_FACTORY, NEW_SPEAR.getSerializerId(), NEW_SPEAR);

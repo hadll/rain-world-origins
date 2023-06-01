@@ -1,0 +1,6 @@
+{
+  "name": "Small Size",
+  "description": "This creature is slightly smaller than a regular player",
+  "loading_priority": 1,
+  "type": "rain-world-origins:small_size"
+}

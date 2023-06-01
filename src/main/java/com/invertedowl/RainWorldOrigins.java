@@ -6,6 +6,7 @@ import com.invertedowl.registry.RWItems;
 import com.invertedowl.registry.RWPowers;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.TypedActionResult;
@@ -22,6 +23,16 @@ public class RainWorldOrigins implements ModInitializer {
         RWPowers.init();
         RWEntities.init();
         RWItems.init();
+
+        ServerTickEvents.END_WORLD_TICK.register(world -> {
+            float time = world.getTimeOfDay();
+
+            if (time >= 13640 && time <= 23000) {
+                world.setWeather(0, 10, true, false);
+            } else {
+                world.setWeather(0, 0, false, false);
+            }
+        });
 
         UseItemCallback.EVENT.register((player, world, hand) -> {
             ItemStack heldItem = player.getStackInHand(hand);

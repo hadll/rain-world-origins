@@ -1,14 +1,18 @@
 package com.invertedowl.mixin;
 
+import com.invertedowl.power.FallDistProt;
 import com.invertedowl.power.OnlyEatSpeared;
 import com.invertedowl.power.TonguePower;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -19,17 +23,64 @@ import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.swing.text.JTextComponent;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
+
+    @Inject(at = @At("HEAD"), method = "handleFallDamage", cancellable = true)
+    private void onFall(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
+
+        if (LivingEntity.class.cast(this) instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) LivingEntity.class.cast(this);
+
+            for (FallDistProt power : PowerHolderComponent.getPowers(player, FallDistProt.class)) {
+                if (power.isActive()) {
+                    cir.cancel();
+
+                    float fall = fallDistance - 5;
+
+                    int i = computeFallDamage(fall, damageMultiplier, player);
+                    if (i > 0) {
+                        playBlockFallSound(player);
+                        player.damage(damageSource, (float)i);
+                    }
+                }
+            }
+        }
+    }
+
+    protected void playBlockFallSound(LivingEntity entity) {
+        if (!entity.isSilent()) {
+            int i = MathHelper.floor(entity.getX());
+            int j = MathHelper.floor(entity.getY() - 0.20000000298023224D);
+            int k = MathHelper.floor(entity.getZ());
+            BlockState blockState = entity.world.getBlockState(new BlockPos(i, j, k));
+            if (!blockState.isAir()) {
+                BlockSoundGroup blockSoundGroup = blockState.getSoundGroup();
+                entity.playSound(blockSoundGroup.getFallSound(), blockSoundGroup.getVolume() * 0.5F, blockSoundGroup.getPitch() * 0.75F);
+            }
+
+        }
+    }
+
+    protected int computeFallDamage(float fallDistance, float damageMultiplier, LivingEntity entity) {
+        StatusEffectInstance statusEffectInstance = entity.getStatusEffect(StatusEffects.JUMP_BOOST);
+        float f = statusEffectInstance == null ? 0.0F : (float)(statusEffectInstance.getAmplifier() + 1);
+        return MathHelper.ceil((fallDistance - 3.0F - f) * damageMultiplier);
+    }
+
     @Inject(at = @At("HEAD"), method = "onDeath")
     private void onDeath(DamageSource damageSource, CallbackInfo ci) {
         if (LivingEntity.class.cast(this) instanceof PlayerEntity) {
@@ -44,7 +95,6 @@ public class LivingEntityMixin {
 
 
         if (source.getAttacker() instanceof PlayerEntity player) {
-//            LivingEntity.class.cast(this).drop
 
             boolean isSpearmaster = false;
 

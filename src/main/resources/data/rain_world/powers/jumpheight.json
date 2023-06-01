@@ -1,0 +1,13 @@
+{
+  "name": "Jump Height",
+  "description": "Rivulet jumps 1.5 times heigher than usual",
+  "loading_priority": 1,
+  "type": "origins:multiple",
+  "jump": {
+    "type": "origins:modify_jump",
+    "modifier": {
+      "operation": "multiply_total",
+      "value": 0.5
+    }
+  }
+}

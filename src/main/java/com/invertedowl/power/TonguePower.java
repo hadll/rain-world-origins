@@ -58,17 +58,9 @@ public class TonguePower extends ActiveCooldownPower {
             if (!tongueOut) {
 
                 Vec3d eyePos = player.getCameraPosVec(1.0F);
-
-                // Get player's eye direction
                 Vec3d eyeDir = player.getRotationVec(1.0F);
-
-                // Set raycast distance
                 double raycastDistance = 100.0;
-
-                // Calculate raycast end position
                 Vec3d raycastEnd = eyePos.add(eyeDir.multiply(raycastDistance));
-
-                // Create raycast context
                 RaycastContext raycastContext = new RaycastContext(eyePos, raycastEnd, RaycastContext.ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player);
 
                 // Perform raycast

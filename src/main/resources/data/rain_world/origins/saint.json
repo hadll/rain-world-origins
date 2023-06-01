@@ -6,7 +6,8 @@
     "rain_world:fallprot",
     "rain_world:extralowhealth",
     "rain_world:levitate",
-    "origins:vegetarian"
+    "origins:vegetarian",
+    "rain_world:smallsize"
   ],
   "icon": {
     "item": "minecraft:lime_wool",

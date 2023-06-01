@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:coal"
+        }
+    ],
+    "result": {"item":"rain-world-origins:rubbish_item_crafted"}
+}

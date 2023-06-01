@@ -72,11 +72,6 @@ public class TongueEntity extends Entity {
         }
 
         this.connected = entity;
-//        PlayerEntity entity = this.world.getClosestPlayer(this.getX(), this.getY(), this.getZ(), 100, false);
-//        this.connected = entity;
-//        if (entity == null) {
-//            return;
-//        }
 
         fromx = (float) entity.getX();
         fromy = (float) entity.getEyeY();
@@ -101,15 +96,14 @@ public class TongueEntity extends Entity {
 
 
         if (dist > initDist) {
-            connected.addVelocity(this.getRotationVector().multiply(0.15f, 0.15f, 0.15f));
+            Vec3d newVel = this.getRotationVector().multiply(0.15f, 0.15f, 0.15f);
+            connected.addVelocity(newVel.getX(), newVel.getY(), newVel.getZ());
         }
     }
 
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
-//        nbt.putFloat("tox", tox);
-//        nbt.putFloat("toy", toy);
-//        nbt.putFloat("toz", toz);
+
     }
 
 

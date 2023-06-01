@@ -12,12 +12,12 @@ import net.minecraft.item.TridentItem;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SpearEntityModel extends EntityModel<SpearEntity> {
+public class ThrowableModel extends EntityModel<SpearEntity> {
     public ModelPart spear;
 
     private final ModelPart main;
 
-    public SpearEntityModel(ModelPart modelPart) {
+    public ThrowableModel(ModelPart modelPart) {
         super(RenderLayer::getEntitySolid);
         this.main = modelPart;
         this.spear = modelPart;

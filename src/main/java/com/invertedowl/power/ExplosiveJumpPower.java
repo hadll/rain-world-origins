@@ -13,6 +13,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 
 import java.util.function.Consumer;
 
@@ -26,21 +27,23 @@ public class ExplosiveJumpPower extends ActiveCooldownPower {
 
     @Override
     public void onUse() {
+
         if (canUse() && ticksSinceUse > cooldownDuration) {
 
             ticksSinceUse = 0;
             PlayerEntity player = (PlayerEntity) entity;
 
-//                boolean mobGriefing = player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
+            boolean mobGriefing = player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
-//                player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, player.getServer());
-//                player.world.createExplosion(player, player.getX(), player.getY() - 1, player.getZ(), 2.0f, World.ExplosionSourceType.MOB);
-//                player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, player.getServer());
+            player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, player.getServer());
+            player.world.createExplosion(player, player.getX(), player.getY() - 1, player.getZ(), 2.0f, Explosion.DestructionType.NONE);
+            player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, player.getServer());
 
+//
+            player.setVelocityClient(player.getVelocity().getX(), 1.2, player.getVelocity().getZ());
             player.setVelocity(player.getVelocity().getX(), 1.2, player.getVelocity().getZ());
-            player.fallDistance = 0;
-
-            player.getWorld().addParticle(ParticleTypes.EXPLOSION_EMITTER, player.getX(), player.getY(), player.getZ(), 0.1, 0.0, 0.0);
+            // This is cringe what the fuck fabric
+            player.velocityModified = true;
         }
     }
 
