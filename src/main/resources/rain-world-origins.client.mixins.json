@@ -3,7 +3,6 @@
 	"package": "com.invertedowl.clientmixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"NetworkMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

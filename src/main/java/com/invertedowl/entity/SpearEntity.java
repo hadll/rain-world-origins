@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandler;
@@ -54,12 +55,18 @@ public class SpearEntity extends PersistentProjectileEntity {
         }
 
         try {
-            // haha what a loser
             float initFoodLevel = ((PlayerEntity) getOwner()).getHungerManager().getFoodLevel();
+            float initSaturationLevel = ((PlayerEntity) getOwner()).getHungerManager().getSaturationLevel();
 
-            float newFoodLevel = initFoodLevel + 2;
+            float newFoodLevel = initFoodLevel + 3;
             if (newFoodLevel > 20) newFoodLevel = 20.0f;
+
+            float newSatLevel = initSaturationLevel + 3;
+            if (newSatLevel> 20) newSatLevel = 20.0f;
+
             ((PlayerEntity) getOwner()).getHungerManager().setFoodLevel((int) newFoodLevel);
+            ((PlayerEntity) getOwner()).getHungerManager().setSaturationLevel((int) newSatLevel);
+            target.damage(DamageSource.arrow(this, getOwner()), 2.0f);
 
 
         } catch (Exception exception) {

@@ -31,6 +31,9 @@ public class RainWorldOriginsClient implements ClientModInitializer {
         EntityRendererRegistry.register(RWEntities.RUBBISH_ENTITY_TYPE, ctx -> {
             return new RubbishEntityRenderer(ctx);
         });
+        EntityRendererRegistry.register(RWEntities.EXPLOSIVE_RUBBISH_ENTITY_TYPE, ctx -> {
+            return new ExplosiveRubbishEntityRenderer(ctx);
+        });
 
 
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, ThrowableModel::getTexturedModelData);

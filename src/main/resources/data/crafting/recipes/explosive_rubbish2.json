@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "rain-world-origins:rubbish_item_crafted"
+        },
+        {
+            "item": "minecraft:tnt"
+        }
+    ],
+    "result": {"item":"rain-world-origins:explosive_rubbish_item_crafted"}
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:coal"
+        },
+        {
+            "item": "minecraft:tnt"
+        }
+    ],
+    "result": {"item":"rain-world-origins:explosive_rubbish_item_crafted"}
+}

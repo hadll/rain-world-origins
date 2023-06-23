@@ -4,7 +4,8 @@
   "powers": [
     "rain_world:onlyeatspeared",
     "rain_world:newspear",
-    "rain_world:smallsize"
+    "rain_world:smallsize",
+    "rain_world:highhealth"
   ],
   "icon": {
     "item": "rain-world-origins:spear_item",

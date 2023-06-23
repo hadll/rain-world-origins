@@ -1,6 +1,5 @@
 package com.invertedowl.entity;
 
-import com.invertedowl.common.TongueSpawnPacket;
 import com.invertedowl.registry.RWEntities;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.Entity;

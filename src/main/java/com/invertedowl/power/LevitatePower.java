@@ -44,7 +44,7 @@ public class LevitatePower extends ActiveCooldownPower {
                     boolean mobGriefing = entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
                     entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, entity.getServer());
-                    entity.world.createExplosion(entity, result.getPos().getX(), result.getPos().getY(), result.getPos().getZ(), 1.5f, Explosion.DestructionType.NONE);
+                    entity.world.createExplosion(entity, result.getPos().getX(), result.getPos().getY(), result.getPos().getZ(), 1.6f, Explosion.DestructionType.NONE);
                     entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, entity.getServer());
                 }
             }
