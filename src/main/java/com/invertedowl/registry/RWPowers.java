@@ -42,6 +42,12 @@ public class RWPowers {
         return power;
     }).allowCondition();
 
+    public static final PowerFactory<Power> REGURGITATE = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "regurgitate"), new SerializableData().add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()), data -> (type, entity) -> {
+        RegurgitatePower power = new RegurgitatePower(type, entity, 20, HudRender.DONT_RENDER, null);
+        power.setKey((Active.Key)data.get("key"));
+        return power;
+    }).allowCondition();
+
     public static void init() {
         Registry.register(ApoliRegistries.POWER_FACTORY, MESSAGE.getSerializerId(), MESSAGE);
         Registry.register(ApoliRegistries.POWER_FACTORY, FALL_DIST_PROT.getSerializerId(), FALL_DIST_PROT);
@@ -51,5 +57,6 @@ public class RWPowers {
         Registry.register(ApoliRegistries.POWER_FACTORY, NEW_SPEAR.getSerializerId(), NEW_SPEAR);
         Registry.register(ApoliRegistries.POWER_FACTORY, TONGUE.getSerializerId(), TONGUE);
         Registry.register(ApoliRegistries.POWER_FACTORY, LEVITATE.getSerializerId(), LEVITATE);
+        Registry.register(ApoliRegistries.POWER_FACTORY, REGURGITATE.getSerializerId(), REGURGITATE);
     }
 }

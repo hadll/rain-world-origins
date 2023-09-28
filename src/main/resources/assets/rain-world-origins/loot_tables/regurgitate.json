@@ -1,0 +1,64 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 3289,
+          "name": "minecraft:beef"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1053,
+          "name": "minecraft:apple"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 987,
+          "name": "minecraft:brown_mushroom"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 300,
+          "name": "rain-world-origins:explosive_rubbish_item_crafted"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 658,
+          "name": "minecraft:seagrass"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 658,
+          "name": "minecraft:scute"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 658,
+          "name": "minecraft:torch"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 526,
+          "name": "minecraft:fermented_spider_eye"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 197,
+          "name": "minecraft:honey_bottle"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 197,
+          "name": "minecraft:tnt"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 66,
+          "name": "minecraft:emerald"
+        }
+      ]
+    }
+  ]
+}

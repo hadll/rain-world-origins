@@ -1,0 +1,15 @@
+{
+  "name": "Gourmand",
+  "description": "An indulger of the simpler pleasures in life. Carrying the world in your stomach gives many tactical advantages, but comes at an increased cost of sustainability.",
+  "powers": [
+    "rain_world:slow",
+    "rain_world:strength",
+    "rain_world:regurgitate"
+  ],
+  "icon": {
+    "item": "minecraft:melon",
+    "amount": 1
+  },
+  "order": 0,
+  "impact": 1
+}

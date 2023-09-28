@@ -1,0 +1,12 @@
+{
+  "name": "Slower",
+  "description": "Gourmand is much slower",
+  "loading_priority": 1,
+  "type": "origins:attribute",
+  "modifier": {
+    "name": "Tailwind speed bonus",
+    "attribute": "minecraft:generic.movement_speed",
+    "value": -0.2,
+    "operation": "multiply_total"
+  }
+}
