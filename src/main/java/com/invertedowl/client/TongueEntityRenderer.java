@@ -11,9 +11,11 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.RotationAxis;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class TongueEntityRenderer extends EntityRenderer<TongueEntity> {
     public TongueEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
 
-        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, -8, 0, 0, 16, 1, 1, 0, 0, 0, false, 16, 16);
+        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, -8, 0, 0, 16, 1, 1, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
 
 
         List<ModelPart.Cuboid> cubes = new ArrayList<>();
@@ -52,8 +54,8 @@ public class TongueEntityRenderer extends EntityRenderer<TongueEntity> {
 
         float dist = (float) Math.sqrt(Math.pow(entity.getDataTracker().get(TongueEntity.TOX)-entity.fromx, 2) + Math.pow(entity.getDataTracker().get(TongueEntity.TOY)-entity.fromy, 2) + Math.pow(entity.getDataTracker().get(TongueEntity.TOZ)-entity.fromz, 2));
         float halfDist = dist / 2;
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180 - entity.getYaw() + 90));
-        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-entity.getPitch()));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180 - entity.getYaw() + 90));
+        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(-entity.getPitch()));
         matrices.scale(dist, 1, 1);
         VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.model.getLayer(this.getTexture(entity)), false, false);
         this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);

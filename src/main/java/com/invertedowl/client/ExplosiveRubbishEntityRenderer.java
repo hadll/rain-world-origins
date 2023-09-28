@@ -12,13 +12,11 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ExplosiveRubbishEntityRenderer extends EntityRenderer<ExplosiveRubbishEntity> {
     private ThrowableModel model;
@@ -35,8 +33,8 @@ public class ExplosiveRubbishEntityRenderer extends EntityRenderer<ExplosiveRubb
 
         int fallBack = 6;
 
-        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 2, 3, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(0, 0, 0-fallBack, 3, 0, 7, 2, 2, 0, 0, 0, false, 16, 16);
+        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 2, 3, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(0, 0, 0-fallBack, 3, 0, 7, 2, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
 
         List<ModelPart.Cuboid> cubes = new ArrayList<>();
         cubes.add(cuboid);
@@ -48,7 +46,7 @@ public class ExplosiveRubbishEntityRenderer extends EntityRenderer<ExplosiveRubb
     public void modelTwo() {
         int fallBack = 10;
 
-        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 12, 2, 2, 0, 0, 0, false, 16, 16);
+        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 12, 2, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
 
         List<ModelPart.Cuboid> cubes = new ArrayList<>();
         cubes.add(cuboid);
@@ -59,11 +57,11 @@ public class ExplosiveRubbishEntityRenderer extends EntityRenderer<ExplosiveRubb
     public void modelThree() {
         int fallBack = 7;
 
-        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 1, 0, 2, 3, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(0, 0, 6-fallBack, 1, 0, 2, 3, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid3 = new ModelPart.Cuboid(0, 0, 3-fallBack, 1, 0, 2, 3, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid4 = new ModelPart.Cuboid(0, 0, 0-fallBack, 4, 0, 8, 1, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid5 = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 8, 1, 2, 0, 0, 0, false, 16, 16);
+        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 1, 0, 2, 3, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(0, 0, 6-fallBack, 1, 0, 2, 3, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid3 = new ModelPart.Cuboid(0, 0, 3-fallBack, 1, 0, 2, 3, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid4 = new ModelPart.Cuboid(0, 0, 0-fallBack, 4, 0, 8, 1, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid5 = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 8, 1, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
 
         List<ModelPart.Cuboid> cubes = new ArrayList<>();
         cubes.add(cuboid);
@@ -79,11 +77,11 @@ public class ExplosiveRubbishEntityRenderer extends EntityRenderer<ExplosiveRubb
     public void modelFour() {
         int fallBack = 1;
 
-        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 2, 9, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(0, 0, -2-fallBack, 7, 0, 2, 2, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid3 = new ModelPart.Cuboid(0, 0, 2-fallBack, 0, 0, 1, 2, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid4 = new ModelPart.Cuboid(0, 0, 2-fallBack, 5, 0, 2, 1, 2, 0, 0, 0, false, 16, 16);
-        ModelPart.Cuboid cuboid5 = new ModelPart.Cuboid(0, 0, -2-fallBack, 5, 0, 2, 1, 2, 0, 0, 0, false, 16, 16);
+        ModelPart.Cuboid cuboid = new ModelPart.Cuboid(0, 0, 0-fallBack, 0, 0, 2, 9, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid2 = new ModelPart.Cuboid(0, 0, -2-fallBack, 7, 0, 2, 2, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid3 = new ModelPart.Cuboid(0, 0, 2-fallBack, 0, 0, 1, 2, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid4 = new ModelPart.Cuboid(0, 0, 2-fallBack, 5, 0, 2, 1, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
+        ModelPart.Cuboid cuboid5 = new ModelPart.Cuboid(0, 0, -2-fallBack, 5, 0, 2, 1, 2, 0, 0, 0, false, 16, 16, EnumSet.allOf(Direction.class));
 
         List<ModelPart.Cuboid> cubes = new ArrayList<>();
         cubes.add(cuboid);
@@ -125,8 +123,8 @@ public class ExplosiveRubbishEntityRenderer extends EntityRenderer<ExplosiveRubb
         }
 
         matrices.push();
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw()) - 90.0F));
-        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch())));
+        matrices.multiply((RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw()) - 90.0F)));
+        matrices.multiply((RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch()))));
         VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.model.getLayer(this.getTexture(entity)), false, false);
         this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
         matrices.pop();

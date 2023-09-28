@@ -69,10 +69,10 @@ public class TonguePower extends ActiveCooldownPower {
 
                 if (raycastResult.getType() == BlockHitResult.Type.BLOCK) {
                     BlockPos blockPos = raycastResult.getBlockPos();
-                    TongueEntity tongueEntity = new TongueEntity(player.world, player, new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
+                    TongueEntity tongueEntity = new TongueEntity(player.getWorld(), player, new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
                     tongueEntity.teleport(player.getX(), player.getY(), player.getZ());
 
-                    player.world.spawnEntity(tongueEntity);
+                    player.getWorld().spawnEntity(tongueEntity);
                     tongues.put(player.getUuid().toString(), tongueEntity);
                 } else {
                     tongueOut = !tongueOut;

@@ -5,12 +5,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -50,8 +52,7 @@ public class ExplosiveRubbishEntity extends PersistentProjectileEntity {
         float f = 0.01F;
 
         Entity entity2 = this.getOwner();
-        DamageSource damageSource = DamageSource.arrow(this, getOwner());
-
+        DamageSource damageSource = entity.getDamageSources().arrow(this, entity2);
 
         if (entity.damage(damageSource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) {
@@ -62,7 +63,7 @@ public class ExplosiveRubbishEntity extends PersistentProjectileEntity {
                 boolean mobGriefing = this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
                 this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, this.getServer());
-                this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, Explosion.DestructionType.NONE);
+                this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, World.ExplosionSourceType.NONE);
                 this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, this.getServer());
             }
             this.remove(RemovalReason.DISCARDED);
@@ -96,7 +97,7 @@ public class ExplosiveRubbishEntity extends PersistentProjectileEntity {
                 boolean mobGriefing = this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
                 this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, this.getServer());
-                this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, Explosion.DestructionType.NONE);
+                this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, World.ExplosionSourceType.NONE);
                 this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, this.getServer());
             }
             this.remove(RemovalReason.DISCARDED);

@@ -11,8 +11,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -63,7 +63,7 @@ public class TongueEntity extends Entity {
     public void tick() {
         super.tick();
 
-        PlayerEntity entity =  (PlayerEntity) this.world.getEntityById(this.dataTracker.get(CONNECTED));
+        PlayerEntity entity =  (PlayerEntity) this.getWorld().getEntityById(this.dataTracker.get(CONNECTED));
 
         if (entity == null) {
             this.remove(RemovalReason.DISCARDED);

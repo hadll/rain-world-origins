@@ -53,6 +53,9 @@ repositories {
 		name "reach entity attributes"
 		url "https://maven.jamieswhiteshirt.com/libs-release"
 	}
+	maven {
+		url "https://cursemaven.com"
+	}
 }
 
 ////loom {
@@ -75,15 +78,16 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "com.github.eggohito:origins-fabric:${project.origins_version}"
-	modImplementation "com.github.eggohito:apoli:2.6.1"
-	modImplementation "com.github.apace100:calio:1.7.0"
+	modImplementation files("libs/Origins-1.20.1-1.10.0.jar")
+	modImplementation files("libs/Apoli-1.20.1-2.9.0.jar")
+	modImplementation files("libs/Pehkui-3.7.7+1.14.4-1.20.1.jar")
+	modImplementation files("libs/Calio-1.20-1.11.0.jar")
+	modImplementation files("libs/cloth-config-11.1.106-fabric.jar")
+	modImplementation files("libs/pal-1.8.0.jar")
+	modImplementation files("libs/cardinal-components-entity-5.1.0.jar")
+	modImplementation "com.github.virtuoel:pehkui:3.7.8"
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.0.2"
-	modImplementation "com.github.virtuoel:pehkui:3.5.0"
-	// Uncomment the following line to enable the deprecated Fabric API modules.
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+	include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:2.4.0")
 }
 
 processResources {

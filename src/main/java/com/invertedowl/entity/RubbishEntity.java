@@ -13,8 +13,8 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -55,7 +55,7 @@ public class RubbishEntity extends PersistentProjectileEntity {
         float f = 0.01F;
 
         Entity entity2 = this.getOwner();
-        DamageSource damageSource = DamageSource.arrow(this, getOwner());
+        DamageSource damageSource = entity.getDamageSources().arrow(this, getOwner());
 
 
         if (entity.damage(damageSource, f)) {

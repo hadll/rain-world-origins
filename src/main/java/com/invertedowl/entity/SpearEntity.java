@@ -17,8 +17,8 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -66,7 +66,7 @@ public class SpearEntity extends PersistentProjectileEntity {
 
             ((PlayerEntity) getOwner()).getHungerManager().setFoodLevel((int) newFoodLevel);
             ((PlayerEntity) getOwner()).getHungerManager().setSaturationLevel((int) newSatLevel);
-            target.damage(DamageSource.arrow(this, getOwner()), 2.0f);
+            target.damage(target.getDamageSources().arrow(this, getOwner()), 2.0f);
 
 
         } catch (Exception exception) {

@@ -34,7 +34,7 @@ public class ServerPlayerInteractMixin {
 			Entity playerEntity = (Entity) player;
 			if (power.isActive()) {
 				if (stack.getItem() == Items.TNT) {
-					TntEntity tntEntity = new TntEntity(player.world, player.getX() - Math.sin(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())), player.getY() + 1, player.getZ() + Math.cos(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())), player);
+					TntEntity tntEntity = new TntEntity(player.getWorld(), player.getX() - Math.sin(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())), player.getY() + 1, player.getZ() + Math.cos(Math.toRadians(playerEntity.getYaw())) * Math.cos(Math.toRadians(player.getPitch())), player);
 
 					// Set the velocity of the TNT entity based on the player's facing direction
 					float speed = 1.5f;
@@ -44,7 +44,7 @@ public class ServerPlayerInteractMixin {
 					tntEntity.setVelocity(motionX, motionY, motionZ);
 
 					tntEntity.setFuse(100000);
-					player.world.spawnEntity(tntEntity);
+					player.getWorld().spawnEntity(tntEntity);
 
 					stack.decrement(1);
 					ServerTickEvents.EndTick tickEndListener;
@@ -58,7 +58,7 @@ public class ServerPlayerInteractMixin {
 							boolean mobGriefing = player.server.getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
 							player.server.getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, player.server);
-							player.world.createExplosion(null, tntEntity.getX(), tntEntity.getY(), tntEntity.getZ(), 2.0f, Explosion.DestructionType.NONE);
+							player.getWorld().createExplosion(null, tntEntity.getX(), tntEntity.getY(), tntEntity.getZ(), 2.0f, World.ExplosionSourceType.NONE);
 							player.server.getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, player.server);
 							tntEntity.remove(Entity.RemovalReason.KILLED);
 						}

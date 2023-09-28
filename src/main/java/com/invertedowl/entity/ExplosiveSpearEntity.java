@@ -9,8 +9,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -53,7 +53,7 @@ public class ExplosiveSpearEntity extends PersistentProjectileEntity {
             boolean mobGriefing = this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
             this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, this.getServer());
-            this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, Explosion.DestructionType.NONE);
+            this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, World.ExplosionSourceType.NONE);
             this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, this.getServer());
         }
         this.remove(RemovalReason.DISCARDED);
@@ -78,7 +78,7 @@ public class ExplosiveSpearEntity extends PersistentProjectileEntity {
                 boolean mobGriefing = this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
                 this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, this.getServer());
-                this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, Explosion.DestructionType.NONE);
+                this.getWorld().createExplosion(null, getX(), getY(), getZ(), 2.0f, World.ExplosionSourceType.NONE);
                 this.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, this.getServer());
             }
             this.remove(RemovalReason.DISCARDED);

@@ -36,7 +36,7 @@ public class ExplosiveJumpPower extends ActiveCooldownPower {
             boolean mobGriefing = player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
             player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, player.getServer());
-            player.world.createExplosion(player, player.getX(), player.getY() - 1, player.getZ(), 2.0f, Explosion.DestructionType.NONE);
+            player.getWorld().createExplosion(player, player.getX(), player.getY() - 1, player.getZ(), 2.0f, World.ExplosionSourceType.NONE);
             player.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, player.getServer());
 
 //
