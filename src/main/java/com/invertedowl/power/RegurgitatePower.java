@@ -10,6 +10,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootDataType;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.context.LootContextParameter;
@@ -61,9 +62,13 @@ public class RegurgitatePower extends ActiveCooldownPower {
         } else {
             LootContextParameterSet lootContextParameterSet = builder.build(LootContextTypes.EMPTY);
             ServerWorld serverWorld = lootContextParameterSet.getWorld();
-            LootTable lootTable = serverWorld.getServer().getLootManager().getLootTable(identifier);
-            System.out.println(lootTable.pools.length);
-            return lootTable.generateLoot(lootContextParameterSet);
+            List<Identifier> identifiers = (List<Identifier>) serverWorld.getServer().getLootManager().getIds(LootDataType.LOOT_TABLES);
+            for (Identifier i : identifiers) {
+                if (i.getNamespace().equals(identifier.getNamespace())) {
+                    System.out.println(i);
+                }
+            }
+            return null;
         }
     }
 
