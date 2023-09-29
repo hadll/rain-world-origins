@@ -42,11 +42,12 @@ public class RegurgitatePower extends ActiveCooldownPower {
     public void onUse() {
         PlayerEntity player = (PlayerEntity) entity;
 
-        if (canUse() && ticksSinceUse > cooldownDuration) {
+        if (canUse() && ticksSinceUse > cooldownDuration && player.getHungerManager().getFoodLevel() > 1) {
             ticksSinceUse = 0;
             List<ItemStack> stacks = sampleLootTable(new Identifier(RainWorldOrigins.MOD_ID, "regurgitate"), player.getWorld());
             player.dropItem(stacks.get(0), true);
-            player.sendMessage(Text.of("gross"));
+            player.getHungerManager().setFoodLevel(player.getHungerManager().getFoodLevel() - 2);
+
         }
     }
 
@@ -62,13 +63,8 @@ public class RegurgitatePower extends ActiveCooldownPower {
         } else {
             LootContextParameterSet lootContextParameterSet = builder.build(LootContextTypes.EMPTY);
             ServerWorld serverWorld = lootContextParameterSet.getWorld();
-            List<Identifier> identifiers = (List<Identifier>) serverWorld.getServer().getLootManager().getIds(LootDataType.LOOT_TABLES);
-            for (Identifier i : identifiers) {
-                if (i.getNamespace().equals(identifier.getNamespace())) {
-                    System.out.println(i);
-                }
-            }
-            return null;
+            LootTable table = serverWorld.getServer().getLootManager().getLootTable(new Identifier("rain_world:regurgitate"));
+            return table.generateLoot(lootContextParameterSet);
         }
     }
 

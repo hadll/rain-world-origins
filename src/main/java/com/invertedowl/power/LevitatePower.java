@@ -29,7 +29,6 @@ public class LevitatePower extends ActiveCooldownPower {
         if (canUse()) {
             if (!((PlayerEntity) entity).isSneaking() && ticksSinceUseLevitate > 20 * 20) {
                 ticksSinceUseLevitate = 0;
-
                 ((PlayerEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 5 * 20, 1, false, false));
             }
             if (((PlayerEntity) entity).isSneaking() && ticksSinceUseBlowsup > 20 * 1) {
@@ -44,7 +43,7 @@ public class LevitatePower extends ActiveCooldownPower {
                     boolean mobGriefing = entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).get();
 
                     entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(false, entity.getServer());
-                    entity.getWorld().createExplosion(entity, result.getPos().getX(), result.getPos().getY(), result.getPos().getZ(), 1.6f, World.ExplosionSourceType.NONE);
+                    entity.getWorld().createExplosion(entity, result.getPos().getX(), result.getPos().getY(), result.getPos().getZ(), 1.61f, World.ExplosionSourceType.NONE);
                     entity.getServer().getGameRules().get(GameRules.DO_MOB_GRIEFING).set(mobGriefing, entity.getServer());
                 }
             }

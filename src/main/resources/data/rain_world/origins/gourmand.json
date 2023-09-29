@@ -4,12 +4,13 @@
   "powers": [
     "rain_world:slow",
     "rain_world:strength",
-    "rain_world:regurgitate"
+    "rain_world:regurgitate",
+    "rain_world:smallsize"
   ],
   "icon": {
     "item": "minecraft:melon",
     "amount": 1
   },
   "order": 0,
-  "impact": 1
+  "impact": 2
 }

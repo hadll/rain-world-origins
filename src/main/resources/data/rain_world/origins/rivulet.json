@@ -1,6 +1,6 @@
 {
   "name": "Rivulet",
-  "description": "Breathes underwater, and moves through the world with ease. These adaptations are essential, as you'll be pitted against a world of increasingly frequent floods, where time is of the essence.",
+  "description": "Breathes underwater, and moves through the world with ease. These adaptations are essential.",
   "powers": [
     "rain_world:speed",
     "rain_world:swim_speed",
@@ -17,5 +17,5 @@
     "amount": 1
   },
   "order": 0,
-  "impact": 1
+  "impact": 2
 }

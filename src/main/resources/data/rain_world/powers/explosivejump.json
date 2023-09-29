@@ -3,12 +3,6 @@
   "description": "Due to The Artificers expert ability in explosives, it is able to to jump a great height by exploding (Primary).",
   "loading_priority": 1,
   "type": "rain-world-origins:explosive_jump",
-  "badges": [
-    {
-      "type": "origins:keybind",
-      "text": "sdf"
-    }
-  ],
   "key": {
     "key": "key.origins.primary_active",
     "continuous": false

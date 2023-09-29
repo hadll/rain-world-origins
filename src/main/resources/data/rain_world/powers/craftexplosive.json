@@ -1,27 +1,5 @@
 {
     "name": "Craft Explosive",
-    "description": "Artificer can craft explosives with one cobblestone.",
-    "badges": [
-        {
-            "type": "origins:crafting_recipe",
-            "recipe": {
-                "id": "craftexplosive/tnt",
-                "group": "invertedowl",
-                "type": "minecraft:crafting_shapeless",
-                "ingredients": [
-                    {
-                        "item": "minecraft:cobblestone"
-                    }
-                ],
-                "result": {
-                    "item": "minecraft:tnt",
-                    "count": 1
-                }
-            },
-            "prefix": "fd",
-            "suffix": "fd"
-        }
-    ],
     "loading_priority": 1,
     "type": "origins:recipe",
     "recipe": {
