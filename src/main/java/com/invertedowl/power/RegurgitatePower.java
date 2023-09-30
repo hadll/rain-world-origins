@@ -19,6 +19,9 @@ import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -47,7 +50,14 @@ public class RegurgitatePower extends ActiveCooldownPower {
             List<ItemStack> stacks = sampleLootTable(new Identifier(RainWorldOrigins.MOD_ID, "regurgitate"), player.getWorld());
             player.dropItem(stacks.get(0), true);
             player.getHungerManager().setFoodLevel(player.getHungerManager().getFoodLevel() - 2);
-
+            player.getWorld().playSound(
+                    null, // Player - if non-null, will play sound for every nearby player *except* the specified player
+                    player.getBlockPos(), // The position of where the sound will come from
+                    SoundEvents.ENTITY_CHICKEN_EGG, // The sound that will play, in this case, the sound the anvil plays when it lands.
+                    SoundCategory.PLAYERS, // This determines which of the volume sliders affect this sound
+                    0.2f, //Volume multiplier, 1 is normal, 0.5 is half volume, etc
+                    1f // Pitch multiplier, 1 is normal, 0.5 is half pitch, etc
+            );
         }
     }
 
