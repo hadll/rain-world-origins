@@ -1,12 +1,19 @@
 {
   "name": "Swim Speed",
-  "description": "Rivulet is 2x faster underwater than usual",
+  "description": "you are faster underwater than usual",
   "loading_priority": 1,
-  "type": "origins:attribute",
-  "modifier": {
-    "attribute": "additionalentityattributes:water_speed",
-    "name": "Additional swim speed",
-    "value": 2,
-    "operation": "multiply_base"
+  "type":"origins:stacking_status_effect",
+  "min_stacks":0,
+  "max_stacks":1,
+  "duration_per_stack":20,
+  "effect":{
+    "effect":"minecraft:dolphins_grace",
+    "amplifier":99,
+    "show_particles":false,
+    "show_icon":false
+  },
+  "condition":{
+    "type":"origins:submerged_in",
+    "fluid":"minecraft:water"
   }
 }

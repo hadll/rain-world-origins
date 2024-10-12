@@ -1,8 +1,8 @@
 {
     "origins": [
-        "rain_world:artificer",
-        "rain_world:spearmaster",
-        "rain_world:rivulet",
+        "rain_world:seadrive",
+        "rain_world:watercolor",
+        "rain_world:seabird",
         "rain_world:saint",
         "rain_world:gourmand"
     ],

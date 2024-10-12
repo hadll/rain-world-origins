@@ -1,0 +1,16 @@
+{
+  "name": "Watercolor",
+  "description": "You are able to give. Your abilities become stronger the further you are from (0,0)",
+  "powers": [
+    "rain_world:onlyeatspeared",
+    "rain_world:newspear",
+    "rain_world:smallsize",
+    "rain_world:highhealth"
+  ],
+  "icon": {
+    "item": "rain-world-origins:spear_item",
+    "amount": 1
+  },
+  "order": 0,
+  "impact": 2
+}

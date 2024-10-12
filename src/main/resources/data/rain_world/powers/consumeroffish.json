@@ -1,0 +1,27 @@
+{
+  "name": "Consumer of Fish",
+  "description": "You can only eat raw fish but gain extra hunger from them",
+  "type":"origins:prevent_item_use",
+  "item_condition":{
+    "type":"origins:and",
+    "conditions":[
+      {
+        "type":"origins:food"
+      },
+      {
+        "type":"origins:ingredient",
+        "ingredient":{
+          "tag":"minecraft:fishes"
+        },
+        "inverted":true
+      },
+      {
+        "type":"origins:ingredient",
+        "ingredient":{
+          "tag":"origins:ignore_diet"
+        },
+        "inverted":true
+      }
+    ]
+  }
+}

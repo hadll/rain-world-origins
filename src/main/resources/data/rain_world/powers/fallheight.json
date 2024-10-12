@@ -1,9 +1,14 @@
 {
   "name": "Small Heights",
-  "description": "Rivulet can take small falls without tkaing damage",
+  "description": "Seabird can take some falls without taking damage",
   "loading_priority": 1,
-  "type": "origins:multiple",
-  "falldistprot": {
-    "type": "rain-world-origins:fall_dist_prot"
+  "type":"origins:modify_damage_taken",
+  "modifier":{
+    "operation":"addition",
+    "value":-5
+  },
+  "damage_condition":{
+    "type":"origins:name",
+    "name":"fall"
   }
 }

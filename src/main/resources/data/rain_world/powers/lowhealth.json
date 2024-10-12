@@ -1,12 +1,12 @@
 {
   "name": "Less Health",
-  "description": "Rivulet has less health than usual.",
+  "description": "Seabird has less health than usual.",
   "loading_priority": 1,
   "type": "origins:attribute",
   "modifier": {
     "name": "Fragile health reduction",
     "attribute": "minecraft:generic.max_health",
-    "value": -8.0,
+    "value": -4.0,
     "operation": "addition"
   }
 }

@@ -5,7 +5,7 @@
 	"name": "Rain World Origins",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Haddle"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.invertedowl.RainWorldOrigins"
+			"com.haddle.RainWorldOrigins"
 		],
 		"client": [
-			"com.invertedowl.client.RainWorldOriginsClient"
+			"com.haddle.client.RainWorldOriginsClient"
 		]
 	},
 	"mixins": [

@@ -1,0 +1,10 @@
+{
+  "name": "Kill Yourself",
+  "description": "Seadrive is able to kill themselves instantly with keep inventory. Press [secondary] to activate",
+  "loading_priority": 1,
+  "type": "rain-world-origins:kys",
+  "key": {
+    "key": "key.origins.secondary_active",
+    "continuous": false
+  }
+}

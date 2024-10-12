@@ -1,6 +1,6 @@
 {
   "name": "Jump Height",
-  "description": "Rivulet jumps 1.5 times heigher than usual",
+  "description": "You jump 1.5 times higher than usual",
   "loading_priority": 1,
   "type": "origins:multiple",
   "jump": {

@@ -1,0 +1,13 @@
+{
+    "name": "Seadrive",
+    "description": "Kill yourself :3",
+    "powers": [
+        "rain_world:kys"
+    ],
+    "icon": {
+        "item": "minecraft:tnt",
+        "amount": 1
+    },
+    "order": 0,
+    "impact": 1
+}
