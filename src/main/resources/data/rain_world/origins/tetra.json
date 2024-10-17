@@ -1,0 +1,13 @@
+{
+  "name": "Tetra",
+  "description": "Gamer",
+  "powers": [
+    "rain_world:better_vision"
+  ],
+  "icon": {
+    "item": "minecraft:blue_wool",
+    "amount": 1
+  },
+  "order": 0,
+  "impact": 2
+}

@@ -1,0 +1,6 @@
+{
+  "name": "We Can Both Live Far Away",
+  "description": "Press (secondary) to activate, giving you buffs for an amount of time depending on your distance from 0,0",
+  "type": "origins:night_vision",
+  "strength": 1
+}

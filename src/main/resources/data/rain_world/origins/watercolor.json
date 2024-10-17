@@ -1,16 +1,17 @@
 {
   "name": "Watercolor",
-  "description": "You are able to give. Your abilities become stronger the further you are from (0,0)",
+  "description": "You are able to give yourself various buffs on a cooldown. Your abilities become stronger the further you are from (0,0)",
   "powers": [
-    "rain_world:onlyeatspeared",
-    "rain_world:newspear",
-    "rain_world:smallsize",
-    "rain_world:highhealth"
+    "rain_world:security-chainmail",
+    "rain_world:security-iron",
+    "rain_world:security-golden",
+    "rain_world:security-netherite",
+    "rain_world:distance-buff"
   ],
   "icon": {
-    "item": "rain-world-origins:spear_item",
+    "item": "minecraft:light_blue_dye",
     "amount": 1
   },
   "order": 0,
-  "impact": 2
+  "impact": 1
 }
