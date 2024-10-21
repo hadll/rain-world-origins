@@ -2,7 +2,8 @@
   "name": "Tetra",
   "description": "Gamer",
   "powers": [
-    "rain_world:better_vision"
+    "rain_world:better_vision",
+    "rain_world:pop_myu"
   ],
   "icon": {
     "item": "minecraft:blue_wool",

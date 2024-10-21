@@ -53,6 +53,12 @@ public class RWPowers {
         return power;
     }).allowCondition();
 
+    public static final PowerFactory<Power> FARAWAY = new PowerFactory<>(new Identifier(RainWorldOrigins.MOD_ID, "faraway"), new SerializableData().add("key", ApoliDataTypes.BACKWARDS_COMPATIBLE_KEY, new Active.Key()), data -> (type, entity) -> {
+        DistancePotionPower power = new DistancePotionPower(type, entity, 20, HudRender.DONT_RENDER, null);
+        power.setKey((Active.Key)data.get("key"));
+        return power;
+    }).allowCondition();
+
     public static void init() {
         Registry.register(ApoliRegistries.POWER_FACTORY, MESSAGE.getSerializerId(), MESSAGE);
         Registry.register(ApoliRegistries.POWER_FACTORY, SMALL_SIZE.getSerializerId(), SMALL_SIZE);
@@ -63,5 +69,6 @@ public class RWPowers {
         Registry.register(ApoliRegistries.POWER_FACTORY, LEVITATE.getSerializerId(), LEVITATE);
         Registry.register(ApoliRegistries.POWER_FACTORY, REGURGITATE.getSerializerId(), REGURGITATE);
         Registry.register(ApoliRegistries.POWER_FACTORY, KYS.getSerializerId(), KYS);
+        Registry.register(ApoliRegistries.POWER_FACTORY, FARAWAY.getSerializerId(), FARAWAY)
     }
 }
